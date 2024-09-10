@@ -225,7 +225,7 @@ RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/Comfy
 
 # Install Application Manager
 WORKDIR /
-RUN git clone https://github.com/ashleykleynhans/app-manager.git /app-manager && \
+RUN git clone https://github.com/oddomatik/app-manager.git /app-manager && \
     cd /app-manager && \
     npm install
 
