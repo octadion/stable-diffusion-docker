@@ -223,6 +223,22 @@ RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/Comfy
     pip3 cache purge && \
     deactivate
 
+# Install AnimateDiff
+RUN git clone https://github.com/guoyww/animatediff.git custom_nodes/animatediff && \
+    cd custom_nodes/animatediff && \
+    source /ComfyUI/venv/bin/activate && \
+    pip3 install -r requirements.txt && \
+    pip3 cache purge && \
+    deactivate
+
+# Install ComfyUI Reactor Node
+RUN git clone https://github.com/Gourieff/comfyui-reactor-node.git custom_nodes/comfyui-reactor-node && \
+cd custom_nodes/comfyui-reactor-node && \
+source /ComfyUI/venv/bin/activate && \
+python3 install.py && \
+pip3 cache purge && \
+deactivate
+
 # Install Application Manager
 WORKDIR /
 RUN git clone https://github.com/oddomatik/app-manager.git /app-manager && \
