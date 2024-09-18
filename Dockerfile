@@ -395,7 +395,7 @@ RUN cd custom_nodes/comfyui_segment_anything_plus && pip3 install -r requirement
 RUN cd custom_nodes/comfyui-sam2 && pip3 install -r requirements.txt && cd ../../
 
 # Clean up cache and deactivate virtual environment
-RUN pip3 cache purge && deactivate
+RUN pip3 cache purge
 
 
 # Install Application Manager
