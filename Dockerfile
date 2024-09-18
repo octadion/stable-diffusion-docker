@@ -380,11 +380,11 @@ RUN cd custom_nodes/wlsh_nodes && pip3 install -r requirements.txt && cd ../../
 
 RUN cd custom_nodes/comfyui_segment_anything && pip3 install -r requirements.txt && python3 install.py && cd ../../
 
-RUN cd custom_nodes/comfyui_layerstyle && \
-    ../../../python_embeded/python.exe -s -m pip install ./whl/docopt-0.6.2-py2.py3-none-any.whl && \
-    ../../../python_embeded/python.exe -s -m pip install ./whl/hydra_core-1.3.2-py3-none-any.whl && \
-    ../../../python_embeded/python.exe -s -m pip install -r requirements.txt && \
-    ./repair_dependency.bat && cd ../../
+# RUN cd custom_nodes/comfyui_layerstyle && \
+#     ../../../python_embeded/python.exe -s -m pip install ./whl/docopt-0.6.2-py2.py3-none-any.whl && \
+#     ../../../python_embeded/python.exe -s -m pip install ./whl/hydra_core-1.3.2-py3-none-any.whl && \
+#     ../../../python_embeded/python.exe -s -m pip install -r requirements.txt && \
+#     ./repair_dependency.bat && cd ../../
 
 RUN cd custom_nodes/eden_comfy_pipelines && pip3 install -r requirements.txt && cd ../../
 
