@@ -317,6 +317,8 @@ RUN wget -O GFPGANv1.3.pth https://github.com/TencentARC/GFPGAN/releases/downloa
     wget -O codeformer-v0.1.0.pth https://huggingface.co/datasets/Gourieff/ReActor/blob/main/models/facerestore_models/codeformer-v0.1.0.pth
 
 # Install ComfyUI Custom Nodes and Additional Packages
+
+# Clone repositories
 RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/ComfyUI-Manager && \
     git clone https://github.com/Gourieff/comfyui-reactor-node.git custom_nodes/comfyui-reactor-node && \
     git clone https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git custom_nodes/comfyui-animatediff-evolved && \
@@ -342,35 +344,59 @@ RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/Comfy
     git clone https://github.com/edenartlab/eden_comfy_pipelines.git custom_nodes/eden_comfy_pipelines && \
     git clone https://github.com/Excidos/ComfyUI-Documents.git custom_nodes/comfyui-documents && \
     git clone https://github.com/un-seen/comfyui_segment_anything_plus.git custom_nodes/comfyui_segment_anything_plus && \
-    git clone https://github.com/neverbiasu/ComfyUI-SAM2.git custom_nodes/comfyui-sam2 && \
-    source /ComfyUI/venv/bin/activate && \
-    cd custom_nodes/ComfyUI-Manager && pip3 install -r requirements.txt && cd ../../ && \
-    cd custom_nodes/comfyui-reactor-node && python3 install.py && cd ../../ && \
-    cd custom_nodes/comfyui-animatediff-evolved && pip3 install . && cd ../../ && \
-    cd custom_nodes/comfyui-advanced-controlnet && pip3 install . && cd ../../ && \
-    cd custom_nodes/comfyui-videohelpersuite && pip3 install -r requirements.txt && pip3 install . && cd ../../ && \
-    cd custom_nodes/comfyui-impact-pack && pip3 install -r requirements.txt && python3 install.py && cd ../../ && \
-    cd custom_nodes/comfyui_controlnet_aux && pip3 install -r requirements.txt && cd ../../ && \
-    cd custom_nodes/comfyui-frame-interpolation && python3 install.py && cd ../../ && \
-    cd custom_nodes/comfyui-clipseg && pip3 install -r requirements.txt && cd ../../ && \
-    cd custom_nodes/efficiency-nodes-comfyui && pip3 install -r requirements.txt && pip3 install . && cd ../../ && \
-    cd custom_nodes/derfuu_comfyui_moddednodes && pip3 install . && cd ../../ && \
-    cd custom_nodes/was-node-suite-comfyui && pip3 install -r requirements.txt && cd ../../ && \
-    cd custom_nodes/comfyui-art-venture && pip3 install -r requirements.txt && cd ../../ && \
-    cd custom_nodes/wlsh_nodes && pip3 install -r requirements.txt && cd ../../ && \
-    cd custom_nodes/comfyui_segment_anything && pip3 install -r requirements.txt && python3 install.py && cd ../../ && \
-    cd custom_nodes/comfyui_layerstyle && \
-    ..\..\..\python_embeded\python.exe -s -m pip install .\whl\docopt-0.6.2-py2.py3-none-any.whl && \
-    ..\..\..\python_embeded\python.exe -s -m pip install .\whl\hydra_core-1.3.2-py3-none-any.whl && \
-    ..\..\..\python_embeded\python.exe -s -m pip install -r requirements.txt && \
-    .\repair_dependency.bat && \
-    cd ../../ && \
-    cd custom_nodes/eden_comfy_pipelines && pip3 install -r requirements.txt && cd ../../ && \
-    cd custom_nodes/comfyui-documents && pip3 install -r requirements.txt && cd ../../ && \
-    cd custom_nodes/comfyui_segment_anything_plus && pip3 install -r requirements.txt && python3 install.py && cd ../../ && \
-    cd custom_nodes/comfyui-sam2 && pip3 install -r requirements.txt && cd ../../ && \
-    pip3 cache purge && \
-    deactivate
+    git clone https://github.com/neverbiasu/ComfyUI-SAM2.git custom_nodes/comfyui-sam2
+
+# Activate virtual environment
+RUN source /ComfyUI/venv/bin/activate
+
+# Install dependencies for specific nodes
+RUN cd custom_nodes/ComfyUI-Manager && pip3 install -r requirements.txt && cd ../../
+
+RUN cd custom_nodes/comfyui-reactor-node && python3 install.py && cd ../../
+
+RUN cd custom_nodes/comfyui-animatediff-evolved && pip3 install . && cd ../../
+
+RUN cd custom_nodes/comfyui-advanced-controlnet && pip3 install . && cd ../../
+
+RUN cd custom_nodes/comfyui-videohelpersuite && pip3 install -r requirements.txt && pip3 install . && cd ../../
+
+RUN cd custom_nodes/comfyui-impact-pack && pip3 install -r requirements.txt && python3 install.py && cd ../../
+
+RUN cd custom_nodes/comfyui_controlnet_aux && pip3 install -r requirements.txt && cd ../../
+
+RUN cd custom_nodes/comfyui-frame-interpolation && python3 install.py && cd ../../
+
+RUN cd custom_nodes/comfyui-clipseg && pip3 install -r requirements.txt && cd ../../
+
+RUN cd custom_nodes/efficiency-nodes-comfyui && pip3 install -r requirements.txt && pip3 install . && cd ../../
+
+RUN cd custom_nodes/derfuu_comfyui_moddednodes && pip3 install . && cd ../../
+
+RUN cd custom_nodes/was-node-suite-comfyui && pip3 install -r requirements.txt && cd ../../
+
+RUN cd custom_nodes/comfyui-art-venture && pip3 install -r requirements.txt && cd ../../
+
+RUN cd custom_nodes/wlsh_nodes && pip3 install -r requirements.txt && cd ../../
+
+RUN cd custom_nodes/comfyui_segment_anything && pip3 install -r requirements.txt && python3 install.py && cd ../../
+
+RUN cd custom_nodes/comfyui_layerstyle && \
+    ../../../python_embeded/python.exe -s -m pip install ./whl/docopt-0.6.2-py2.py3-none-any.whl && \
+    ../../../python_embeded/python.exe -s -m pip install ./whl/hydra_core-1.3.2-py3-none-any.whl && \
+    ../../../python_embeded/python.exe -s -m pip install -r requirements.txt && \
+    ./repair_dependency.bat && cd ../../
+
+RUN cd custom_nodes/eden_comfy_pipelines && pip3 install -r requirements.txt && cd ../../
+
+RUN cd custom_nodes/comfyui-documents && pip3 install -r requirements.txt && cd ../../
+
+RUN cd custom_nodes/comfyui_segment_anything_plus && pip3 install -r requirements.txt && python3 install.py && cd ../../
+
+RUN cd custom_nodes/comfyui-sam2 && pip3 install -r requirements.txt && cd ../../
+
+# Clean up cache and deactivate virtual environment
+RUN pip3 cache purge && deactivate
+
 
 # Install Application Manager
 WORKDIR /
