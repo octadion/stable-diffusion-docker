@@ -366,7 +366,7 @@ RUN cd custom_nodes/comfyui_controlnet_aux && pip3 install -r requirements.txt &
 
 RUN cd custom_nodes/comfyui-frame-interpolation && python3 install.py && cd ../../
 
-RUN cd custom_nodes/comfyui-clipseg && pip3 install -r requirements.txt && cd ../../
+# RUN cd custom_nodes/comfyui-clipseg && pip3 install -r requirements.txt && cd ../../
 
 RUN cd custom_nodes/efficiency-nodes-comfyui && pip3 install -r requirements.txt && pip3 install . && cd ../../
 
