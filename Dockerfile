@@ -214,6 +214,13 @@ RUN python3 -m venv --system-site-packages venv && \
     pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} && \
     pip3 install -r requirements.txt && \
     deactivate
+    
+RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/ComfyUI-Manager && \
+    cd custom_nodes/ComfyUI-Manager && \
+    source /ComfyUI/venv/bin/activate && \
+    pip3 install -r requirements.txt && \
+    pip3 cache purge && \
+    deactivate
 
 RUN mkdir -p /ComfyUI/models/controlnet \
     /ComfyUI/models/controlnet/SDXL/instantid \
@@ -322,15 +329,15 @@ RUN wget -O GFPGANv1.3.pth https://github.com/TencentARC/GFPGAN/releases/downloa
 WORKDIR /ComfyUI
 # Ensure the custom_nodes directory exists, clone all repositories, and install dependencies in a single RUN command
 RUN mkdir -p custom_nodes && \
-    git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/ComfyUI-Manager && \
+    # git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/ComfyUI-Manager && \
     git clone https://github.com/Gourieff/comfyui-reactor-node.git custom_nodes/comfyui-reactor-node && \
     git clone https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git custom_nodes/comfyui-animatediff-evolved && \
     git clone https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet.git custom_nodes/comfyui-advanced-controlnet && \
     git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git custom_nodes/comfyui-videohelpersuite && \
     git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git custom_nodes/comfyui-impact-pack && \
-    git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git custom_nodes/comfyui_controlnet_aux && \
-    git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git custom_nodes/comfyui-frame-interpolation && \
-    git clone https://github.com/time-river/ComfyUI-CLIPSeg.git custom_nodes/comfyui-clipseg && \
+    # git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git custom_nodes/comfyui_controlnet_aux && \
+    # git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git custom_nodes/comfyui-frame-interpolation && \
+    # git clone https://github.com/time-river/ComfyUI-CLIPSeg.git custom_nodes/comfyui-clipseg && \
     git clone https://github.com/jags111/efficiency-nodes-comfyui.git custom_nodes/efficiency-nodes-comfyui && \
     git clone https://github.com/Derfuu/Derfuu_ComfyUI_ModdedNodes.git custom_nodes/derfuu_comfyui_moddednodes && \
     git clone https://github.com/WASasquatch/was-node-suite-comfyui.git custom_nodes/was-node-suite-comfyui && \
@@ -343,7 +350,7 @@ RUN mkdir -p custom_nodes && \
     git clone https://github.com/M1kep/ComfyLiterals.git custom_nodes/comfy_literals && \
     git clone https://github.com/rgthree/rgthree-comfy.git custom_nodes/rgthree-comfy && \
     git clone https://github.com/storyicon/comfyui_segment_anything.git custom_nodes/comfyui_segment_anything && \
-    git clone https://github.com/chflame163/ComfyUI_LayerStyle.git custom_nodes/comfyui_layerstyle && \
+    # git clone https://github.com/chflame163/ComfyUI_LayerStyle.git custom_nodes/comfyui_layerstyle && \
     git clone https://github.com/edenartlab/eden_comfy_pipelines.git custom_nodes/eden_comfy_pipelines && \
     git clone https://github.com/Excidos/ComfyUI-Documents.git custom_nodes/comfyui-documents && \
     git clone https://github.com/un-seen/comfyui_segment_anything_plus.git custom_nodes/comfyui_segment_anything_plus && \
@@ -351,14 +358,14 @@ RUN mkdir -p custom_nodes && \
     \
     # Activate virtual environment and install dependencies for each custom node
     source /ComfyUI/venv/bin/activate && \
-    cd custom_nodes/ComfyUI-Manager && pip3 install -r requirements.txt && cd ../../ && \
+    # cd custom_nodes/ComfyUI-Manager && pip3 install -r requirements.txt && cd ../../ && \
     cd custom_nodes/comfyui-reactor-node && python3 install.py && cd ../../ && \
     cd custom_nodes/comfyui-animatediff-evolved && pip3 install . && cd ../../ && \
     cd custom_nodes/comfyui-advanced-controlnet && pip3 install . && cd ../../ && \
     cd custom_nodes/comfyui-videohelpersuite && pip3 install -r requirements.txt && pip3 install . && cd ../../ && \
     cd custom_nodes/comfyui-impact-pack && pip3 install -r requirements.txt && python3 install.py && cd ../../ && \
-    cd custom_nodes/comfyui_controlnet_aux && pip3 install -r requirements.txt && cd ../../ && \
-    cd custom_nodes/comfyui-frame-interpolation && python3 install.py && cd ../../ && \
+    # cd custom_nodes/comfyui_controlnet_aux && pip3 install -r requirements.txt && cd ../../ && \
+    # cd custom_nodes/comfyui-frame-interpolation && python3 install.py && cd ../../ && \
     cd custom_nodes/efficiency-nodes-comfyui && pip3 install -r requirements.txt && pip3 install . && cd ../../ && \
     cd custom_nodes/derfuu_comfyui_moddednodes && pip3 install . && cd ../../ && \
     cd custom_nodes/was-node-suite-comfyui && pip3 install -r requirements.txt && cd ../../ && \
