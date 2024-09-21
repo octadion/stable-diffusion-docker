@@ -327,32 +327,32 @@ RUN wget -O GFPGANv1.3.pth https://github.com/TencentARC/GFPGAN/releases/downloa
 
 # Set the working directory to ComfyUI
 WORKDIR /ComfyUI
-# Ensure the custom_nodes directory exists, clone all repositories without renaming them
+# Ensure the custom_nodes directory exists, clone all repositories into their respective subdirectories
 RUN mkdir -p custom_nodes && \
-    git clone https://github.com/Gourieff/comfyui-reactor-node.git custom_nodes/ && \
-    git clone https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git custom_nodes/ && \
-    git clone https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet.git custom_nodes/ && \
-    git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git custom_nodes/ && \
-    git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git custom_nodes/ && \
-    git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git custom_nodes/ && \
-    git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git custom_nodes/ && \
-    git clone https://github.com/jags111/efficiency-nodes-comfyui.git custom_nodes/ && \
-    git clone https://github.com/Derfuu/Derfuu_ComfyUI_ModdedNodes.git custom_nodes/ && \
-    git clone https://github.com/WASasquatch/was-node-suite-comfyui.git custom_nodes/ && \
-    git clone https://github.com/SLAPaper/ComfyUI-Image-Selector.git custom_nodes/ && \
-    git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git custom_nodes/ && \
-    git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git custom_nodes/ && \
-    git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git custom_nodes/ && \
-    git clone https://github.com/sipherxyz/comfyui-art-venture.git custom_nodes/ && \
-    git clone https://github.com/wallish77/wlsh_nodes.git custom_nodes/ && \
-    git clone https://github.com/M1kep/ComfyLiterals.git custom_nodes/ && \
-    git clone https://github.com/rgthree/rgthree-comfy.git custom_nodes/ && \
-    git clone https://github.com/storyicon/comfyui_segment_anything.git custom_nodes/ && \
-    git clone https://github.com/chflame163/ComfyUI_LayerStyle.git custom_nodes/ && \
-    git clone https://github.com/edenartlab/eden_comfy_pipelines.git custom_nodes/ && \
-    git clone https://github.com/Excidos/ComfyUI-Documents.git custom_nodes/ && \
-    git clone https://github.com/un-seen/comfyui_segment_anything_plus.git custom_nodes/ && \
-    git clone https://github.com/neverbiasu/ComfyUI-SAM2.git custom_nodes/ && \
+    git clone https://github.com/Gourieff/comfyui-reactor-node.git custom_nodes/comfyui-reactor-node && \
+    git clone https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git custom_nodes/ComfyUI-AnimateDiff-Evolved && \
+    git clone https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet.git custom_nodes/ComfyUI-Advanced-ControlNet && \
+    git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git custom_nodes/ComfyUI-VideoHelperSuite && \
+    git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git custom_nodes/ComfyUI-Impact-Pack && \
+    git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git custom_nodes/comfyui_controlnet_aux && \
+    git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git custom_nodes/ComfyUI-Frame-Interpolation && \
+    git clone https://github.com/jags111/efficiency-nodes-comfyui.git custom_nodes/efficiency-nodes-comfyui && \
+    git clone https://github.com/Derfuu/Derfuu_ComfyUI_ModdedNodes.git custom_nodes/Derfuu_ComfyUI_ModdedNodes && \
+    git clone https://github.com/WASasquatch/was-node-suite-comfyui.git custom_nodes/was-node-suite-comfyui && \
+    git clone https://github.com/SLAPaper/ComfyUI-Image-Selector.git custom_nodes/ComfyUI-Image-Selector && \
+    git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git custom_nodes/ComfyUI-Custom-Scripts && \
+    git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale.git custom_nodes/ComfyUI_UltimateSDUpscale && \
+    git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git custom_nodes/ComfyUI_IPAdapter_plus && \
+    git clone https://github.com/sipherxyz/comfyui-art-venture.git custom_nodes/comfyui-art-venture && \
+    git clone https://github.com/wallish77/wlsh_nodes.git custom_nodes/wlsh_nodes && \
+    git clone https://github.com/M1kep/ComfyLiterals.git custom_nodes/ComfyLiterals && \
+    git clone https://github.com/rgthree/rgthree-comfy.git custom_nodes/rgthree-comfy && \
+    git clone https://github.com/storyicon/comfyui_segment_anything.git custom_nodes/comfyui_segment_anything && \
+    git clone https://github.com/chflame163/ComfyUI_LayerStyle.git custom_nodes/ComfyUI_LayerStyle && \
+    git clone https://github.com/edenartlab/eden_comfy_pipelines.git custom_nodes/eden_comfy_pipelines && \
+    git clone https://github.com/Excidos/ComfyUI-Documents.git custom_nodes/ComfyUI-Documents && \
+    git clone https://github.com/un-seen/comfyui_segment_anything_plus.git custom_nodes/comfyui_segment_anything_plus && \
+    git clone https://github.com/neverbiasu/ComfyUI-SAM2.git custom_nodes/ComfyUI-SAM2 && \
     \
     # Activate virtual environment and install dependencies for each custom node
     source /ComfyUI/venv/bin/activate && \
