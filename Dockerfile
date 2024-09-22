@@ -238,6 +238,18 @@ RUN git clone https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git cus
     pip3 cache purge && \
     deactivate
 
+RUN mkdir -p /workspace/ComfyUI/models/animatediff_models && \
+    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v14.ckpt && \
+    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v15.ckpt && \
+    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v15_v2.ckpt && \
+    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/v3_sd15_mm.ckpt && \
+    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/manshoety/AD_Stabilized_Motion/resolve/main/mm-Stabilized_high.pth && \
+    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/manshoety/AD_Stabilized_Motion/resolve/main/mm-Stabilized_mid.pth && \
+    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/manshoety/beta_testing_models/resolve/main/mm-p_0.5.pth && \
+    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/manshoety/beta_testing_models/resolve/main/mm-p_0.75.pth && \
+    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/CiaraRowles/TemporalDiff/resolve/main/temporaldiff-v1-animatediff.ckpt && \
+    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/CiaraRowles/TemporalDiff/resolve/main/temporaldiff-v1-animatediff.safetensors
+
 # Install ComfyUI-Advanced-ControlNet
 RUN git clone https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet.git custom_nodes/ComfyUI-Advanced-ControlNet && \
     cd custom_nodes/ComfyUI-Advanced-ControlNet && \
@@ -361,7 +373,7 @@ RUN git clone https://github.com/neverbiasu/ComfyUI-SAM2.git custom_nodes/ComfyU
 RUN source /ComfyUI/venv/bin/activate && \
     pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
     pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} && \
-    pip3 install albumentations insightface opencv-python-headless ffmpeg-python && \
+    pip3 install albumentations==1.4.15 albucore==0.0.16 insightface opencv-python-headless ffmpeg-python && \
     pip3 install torchaudio && \
     pip3 install albucore && \
     deactivate
