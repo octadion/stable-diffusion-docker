@@ -375,7 +375,6 @@ RUN source /ComfyUI/venv/bin/activate && \
     pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} && \
     pip3 install albumentations==1.4.15 albucore==0.0.16 insightface opencv-python-headless ffmpeg-python && \
     pip3 install torchaudio && \
-    pip3 install albucore && \
     deactivate
 
 # Instal ffmpeg
