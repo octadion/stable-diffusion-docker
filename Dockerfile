@@ -210,8 +210,8 @@ RUN git clone https://github.com/comfyanonymous/ComfyUI.git /ComfyUI
 WORKDIR /ComfyUI
 RUN python3 -m venv --system-site-packages venv && \
     source venv/bin/activate && \
-    pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
-    pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} && \
+    # pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
+    # pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} && \
     pip3 install -r requirements.txt && \
     deactivate
     
@@ -355,6 +355,28 @@ RUN git clone https://github.com/neverbiasu/ComfyUI-SAM2.git custom_nodes/ComfyU
     cd custom_nodes/ComfyUI-SAM2 && \
     source /ComfyUI/venv/bin/activate && \
     pip3 install -r requirements.txt && \
+    pip3 cache purge && \
+    deactivate
+
+RUN source /ComfyUI/venv/bin/activate && \
+    pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} && \
+    pip3 install albumentations insightface opencv-python-headless ffmpeg-python && \
+    pip3 install torchaudio && \
+    pip3 install albucore && \
+    deactivate
+
+# Instal ffmpeg
+RUN apt-get update && apt-get install -y ffmpeg
+
+# Verifikasi versi
+RUN source /ComfyUI/venv/bin/activate && \
+    python -c "import torch; print('Torch version:', torch.__version__)" && \
+    python -c "import xformers; print('xFormers version:', xformers.__version__)" && \
+    deactivate
+
+# Bersihkan cache pip
+RUN source /ComfyUI/venv/bin/activate && \
     pip3 cache purge && \
     deactivate
 
