@@ -238,19 +238,22 @@ RUN git clone https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git cus
     pip3 cache purge && \
     deactivate
 
-RUN mkdir -p /workspace/ComfyUI/models/animatediff_models && \
-    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v14.ckpt && \
-    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v15.ckpt && \
-    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v15_v2.ckpt && \
-    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/v3_sd15_mm.ckpt && \
-    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/manshoety/AD_Stabilized_Motion/resolve/main/mm-Stabilized_high.pth && \
-    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/manshoety/AD_Stabilized_Motion/resolve/main/mm-Stabilized_mid.pth && \
-    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/manshoety/beta_testing_models/resolve/main/mm-p_0.5.pth && \
-    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/manshoety/beta_testing_models/resolve/main/mm-p_0.75.pth && \
-    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/CiaraRowles/TemporalDiff/resolve/main/temporaldiff-v1-animatediff.ckpt && \
-    wget -P /workspace/ComfyUI/models/animatediff_models https://huggingface.co/CiaraRowles/TemporalDiff/resolve/main/temporaldiff-v1-animatediff.safetensors
+RUN mkdir -p /workspace/ComfyUI/models/animatediff_models
 
-# Install ComfyUI-Advanced-ControlNet
+    # Download AnimateDiff models
+WORKDIR /workspace/ComfyUI/models/animatediff_models
+RUN wget -O mm_sd_v14.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v14.ckpt && \
+    wget -O mm_sd_v15.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v15.ckpt && \
+    wget -O mm_sd_v15_v2.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v15_v2.ckpt && \
+    wget -O v3_sd15_mm.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/v3_sd15_mm.ckpt && \
+    wget -O mm-Stabilized_high.pth https://huggingface.co/manshoety/AD_Stabilized_Motion/resolve/main/mm-Stabilized_high.pth && \
+    wget -O mm-Stabilized_mid.pth https://huggingface.co/manshoety/AD_Stabilized_Motion/resolve/main/mm-Stabilized_mid.pth && \
+    wget -O mm-p_0.5.pth https://huggingface.co/manshoety/beta_testing_models/resolve/main/mm-p_0.5.pth && \
+    wget -O mm-p_0.75.pth https://huggingface.co/manshoety/beta_testing_models/resolve/main/mm-p_0.75.pth && \
+    wget -O temporaldiff-v1-animatediff.ckpt https://huggingface.co/CiaraRowles/TemporalDiff/resolve/main/temporaldiff-v1-animatediff.ckpt && \
+    wget -O temporaldiff-v1-animatediff.safetensors https://huggingface.co/CiaraRowles/TemporalDiff/resolve/main/temporaldiff-v1-animatediff.safetensors
+
+    # Install ComfyUI-Advanced-ControlNet
 RUN git clone https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet.git custom_nodes/ComfyUI-Advanced-ControlNet && \
     cd custom_nodes/ComfyUI-Advanced-ControlNet && \
     source /ComfyUI/venv/bin/activate && \
