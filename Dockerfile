@@ -238,22 +238,7 @@ RUN git clone https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git cus
     pip3 cache purge && \
     deactivate
 
-RUN mkdir -p /workspace/ComfyUI/models/animatediff_models
-
-    # Download AnimateDiff models
-WORKDIR /workspace/ComfyUI/models/animatediff_models
-RUN wget -O mm_sd_v14.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v14.ckpt && \
-    wget -O mm_sd_v15.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v15.ckpt && \
-    wget -O mm_sd_v15_v2.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v15_v2.ckpt && \
-    wget -O v3_sd15_mm.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/v3_sd15_mm.ckpt && \
-    wget -O mm-Stabilized_high.pth https://huggingface.co/manshoety/AD_Stabilized_Motion/resolve/main/mm-Stabilized_high.pth && \
-    wget -O mm-Stabilized_mid.pth https://huggingface.co/manshoety/AD_Stabilized_Motion/resolve/main/mm-Stabilized_mid.pth && \
-    wget -O mm-p_0.5.pth https://huggingface.co/manshoety/beta_testing_models/resolve/main/mm-p_0.5.pth && \
-    wget -O mm-p_0.75.pth https://huggingface.co/manshoety/beta_testing_models/resolve/main/mm-p_0.75.pth && \
-    wget -O temporaldiff-v1-animatediff.ckpt https://huggingface.co/CiaraRowles/TemporalDiff/resolve/main/temporaldiff-v1-animatediff.ckpt && \
-    wget -O temporaldiff-v1-animatediff.safetensors https://huggingface.co/CiaraRowles/TemporalDiff/resolve/main/temporaldiff-v1-animatediff.safetensors
-
-    # Install ComfyUI-Advanced-ControlNet
+# Install ComfyUI-Advanced-ControlNet
 RUN git clone https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet.git custom_nodes/ComfyUI-Advanced-ControlNet && \
     cd custom_nodes/ComfyUI-Advanced-ControlNet && \
     source /ComfyUI/venv/bin/activate && \
@@ -389,13 +374,14 @@ RUN source /ComfyUI/venv/bin/activate && \
 
 # Instal ffmpeg
 RUN apt-get update && apt-get install -y ffmpeg
-RUN echo '{ \
-    "ffmpeg_bin_path": "/usr/bin/ffmpeg", \
-    "ffmpeg_extra_codecs": { \
-        "avc1": ".mp4", \
-        "h264": ".mkv" \
-    } \
-}' > /workspace/ComfyUI/custom_nodes/was-node-suite-comfyui/was_suite_config.json
+RUN mkdir -p /workspace/ComfyUI/custom_nodes/was-node-suite-comfyui && \
+    echo '{ \
+        "ffmpeg_bin_path": "/usr/bin/ffmpeg", \
+        "ffmpeg_extra_codecs": { \
+            "avc1": ".mp4", \
+            "h264": ".mkv" \
+        } \
+    }' > /workspace/ComfyUI/custom_nodes/was-node-suite-comfyui/was_suite_config.json
 
 # Verifikasi versi
 RUN source /ComfyUI/venv/bin/activate && \
@@ -418,7 +404,20 @@ RUN mkdir -p /ComfyUI/models/controlnet \
     /ComfyUI/models/loras/ipadapter \
     /ComfyUI/models/sams \
     /ComfyUI/models/ultralytics/bbox \
+    /ComfyUI/models/animatediff_models \
     /ComfyUI/models/ultralytics/segm
+
+WORKDIR /ComfyUI/models/animatediff_models
+RUN wget -O mm_sd_v14.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v14.ckpt && \
+    wget -O mm_sd_v15.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v15.ckpt && \
+    wget -O mm_sd_v15_v2.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v15_v2.ckpt && \
+    wget -O v3_sd15_mm.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/v3_sd15_mm.ckpt && \
+    wget -O mm-Stabilized_high.pth https://huggingface.co/manshoety/AD_Stabilized_Motion/resolve/main/mm-Stabilized_high.pth && \
+    wget -O mm-Stabilized_mid.pth https://huggingface.co/manshoety/AD_Stabilized_Motion/resolve/main/mm-Stabilized_mid.pth && \
+    wget -O mm-p_0.5.pth https://huggingface.co/manshoety/beta_testing_models/resolve/main/mm-p_0.5.pth && \
+    wget -O mm-p_0.75.pth https://huggingface.co/manshoety/beta_testing_models/resolve/main/mm-p_0.75.pth && \
+    wget -O temporaldiff-v1-animatediff.ckpt https://huggingface.co/CiaraRowles/TemporalDiff/resolve/main/temporaldiff-v1-animatediff.ckpt && \
+    wget -O temporaldiff-v1-animatediff.safetensors https://huggingface.co/CiaraRowles/TemporalDiff/resolve/main/temporaldiff-v1-animatediff.safetensors
 
 # Download IP-Adapter models
 WORKDIR /ComfyUI/models/ipadapter
