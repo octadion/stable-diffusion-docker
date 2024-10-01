@@ -214,12 +214,13 @@ RUN mkdir -p /stable-diffusion-webui/models/Stable-diffusion && \
     cd /stable-diffusion-webui/models/Stable-diffusion && \
     wget https://civitai.com/api/download/models/456194 -O Juggernaut_X_RunDiffusion.safetensors && \
     wget https://civitai.com/api/download/models/272376 -O picxReal_10.safetensors && \
-    wget https://civitai.com/api/download/models/130072?type=Model&format=SafeTensor&size=pruned&fp=fp16 -O realisticVisionV60B1_v51VAE.safetensors && \
+    wget https://civitai.com/api/download/models/130072?type=Model\&format=SafeTensor\&size=pruned\&fp=fp16 -O realisticVisionV60B1_v51VAE.safetensors && \
     wget https://civitai.com/api/download/models/69832 -O disneyPixarCartoon_v10.safetensors && \
-    wget https://civitai.com/api/download/models/128713?type=Model&format=SafeTensor&size=pruned&fp=fp16 -O dreamshaper_8.safetensors && \
-    wget https://civitai.com/api/download/models/256668?type=Model&format=SafeTensor&size=pruned&fp=fp16 -O absolutereality_lcm.safetensors && \
+    wget https://civitai.com/api/download/models/128713?type=Model\&format=SafeTensor\&size=pruned\&fp=fp16 -O dreamshaper_8.safetensors && \
+    wget https://civitai.com/api/download/models/256668?type=Model\&format=SafeTensor\&size=pruned\&fp=fp16 -O absolutereality_lcm.safetensors && \
     wget https://civitai.com/api/download/models/537505?token=7629ebe930db512a2ff619a430b37bc6 -O cyberrealistic_v50.safetensors && \
-    wget https://civitai.com/api/download/models/124626?type=Model&format=SafeTensor&size=pruned&fp=fp16 -O rpg_v5.safetensors
+    wget https://civitai.com/api/download/models/124626?type=Model\&format=SafeTensor\&size=pruned\&fp=fp16 -O rpg_v5.safetensors
+
 
 # Configure ReActor to use the GPU instead of the CPU
 RUN echo "CUDA" > /stable-diffusion-webui/extensions/sd-webui-reactor/last_device.txt
