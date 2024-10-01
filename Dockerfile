@@ -175,6 +175,52 @@ RUN mkdir -p /stable-diffusion-webui/models/insightface && \
     cd /stable-diffusion-webui/models/insightface && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/inswapper_128.onnx
 
+RUN mkdir -p /stable-diffusion-webui/models/ControlNet && \
+    cd /stable-diffusion-webui/models/ControlNet && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_openpose.pth?download=true -O control_v11p_sd15_openpose.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_softedge.pth?download=true -O control_v11p_sd15_softedge.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15s2_lineart_anime.pth?download=true -O control_v11p_sd15s2_lineart_anime.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_scribble.pth?download=true -O control_v11p_sd15_scribble.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_seg.pth?download=true -O control_v11p_sd15_seg.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_normalbae.pth?download=true -O control_v11p_sd15_normalbae.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_mlsd.pth?download=true -O control_v11p_sd15_mlsd.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_lineart.pth?download=true -O control_v11p_sd15_lineart.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth?download=true -O control_v11p_sd15_canny.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1p_sd15_depth.pth?download=true -O control_v11f1p_sd15_depth.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile.pth?download=true -O control_v11f1e_sd15_tile.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11e_sd15_shuffle.pth?download=true -O control_v11e_sd15_shuffle.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11e_sd15_ip2p.pth?download=true -O control_v11e_sd15_ip2p.pth && \
+    wget https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_inpaint.pth?download=true -O control_v11p_sd15_inpaint.pth && \
+    wget https://huggingface.co/latentcat/control_v1u_sd15_illumination_webui/resolve/main/illumination20000.safetensors?download=true -O illumination20000.safetensors && \
+    mkdir -p /stable-diffusion-webui/models/ipadapter && \
+    cd /stable-diffusion-webui/models/ipadapter && \
+    wget https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-full-face_sd15.bin?download=true -O ip-adapter-full-face_sd15.bin && \
+    wget https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.bin?download=true -O ip-adapter-plus-face_sd15.bin && \
+    wget https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus_sd15.bin?download=true -O ip-adapter-plus_sd15.bin && \
+    wget https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15.bin?download=true -O ip-adapter_sd15.bin && \
+    wget https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_light.bin?download=true -O ip-adapter_sd15_light.bin && \
+    wget https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_vit-G.bin?download=true -O ip-adapter_sd15_vit-G.bin && \
+    wget https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl.safetensors -O ip-adapter_sdxl.safetensors && \
+    wget https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors -O ip-adapter_sdxl_vit-h.safetensors && \
+    wget https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors -O ip-adapter-plus_sdxl_vit-h.safetensors && \
+    wget https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors -O ip-adapter-plus-face_sdxl_vit-h.safetensors && \
+    wget https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sd15.bin -O ip-adapter-faceid_sd15.bin && \
+    wget https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plus_sd15.bin -O ip-adapter-faceid-plus_sd15.bin && \
+    wget https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15.bin -O ip-adapter-faceid-plusv2_sd15.bin && \
+    wget https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl.bin -O ip-adapter-faceid_sdxl.bin && \
+    wget https://huggingface.co/hr16/ControlNet-HandRefiner-pruned/resolve/main/control_sd15_inpaint_depth_hand_fp16.safetensors -O control_sd15_inpaint_depth_hand_fp16.safetensors && \
+    wget https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl.bin -O ip-adapter-faceid-plusv2_sdxl.bin && \
+    mkdir -p /stable-diffusion-webui/models/Stable-diffusion && \
+    cd /stable-diffusion-webui/models/Stable-diffusion && \
+    wget https://civitai.com/api/download/models/456194 -O Juggernaut_X_RunDiffusion.safetensors && \
+    wget https://civitai.com/api/download/models/272376 -O picxReal_10.safetensors && \
+    wget https://civitai.com/api/download/models/130072?type=Model&format=SafeTensor&size=pruned&fp=fp16 -O realisticVisionV60B1_v51VAE.safetensors && \
+    wget https://civitai.com/api/download/models/69832 -O disneyPixarCartoon_v10.safetensors && \
+    wget https://civitai.com/api/download/models/128713?type=Model&format=SafeTensor&size=pruned&fp=fp16 -O dreamshaper_8.safetensors && \
+    wget https://civitai.com/api/download/models/256668?type=Model&format=SafeTensor&size=pruned&fp=fp16 -O absolutereality_lcm.safetensors && \
+    wget https://civitai.com/api/download/models/537505?token=7629ebe930db512a2ff619a430b37bc6 -O cyberrealistic_v50.safetensors && \
+    wget https://civitai.com/api/download/models/124626?type=Model&format=SafeTensor&size=pruned&fp=fp16 -O rpg_v5.safetensors
+
 # Configure ReActor to use the GPU instead of the CPU
 RUN echo "CUDA" > /stable-diffusion-webui/extensions/sd-webui-reactor/last_device.txt
 
@@ -405,7 +451,9 @@ RUN mkdir -p /ComfyUI/models/controlnet \
     /ComfyUI/models/sams \
     /ComfyUI/models/ultralytics/bbox \
     /ComfyUI/models/animatediff_models \
-    /ComfyUI/models/ultralytics/segm
+    /ComfyUI/models/ultralytics/segm \
+    /ComfyUI/models/grounding-dino \
+    /ComfyUI/models/checkpoints
 
 WORKDIR /ComfyUI/models/animatediff_models
 RUN wget -O mm_sd_v14.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v14.ckpt && \
@@ -419,6 +467,15 @@ RUN wget -O mm_sd_v14.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd7
     wget -O temporaldiff-v1-animatediff.ckpt https://huggingface.co/CiaraRowles/TemporalDiff/resolve/main/temporaldiff-v1-animatediff.ckpt && \
     wget -O temporaldiff-v1-animatediff.safetensors https://huggingface.co/CiaraRowles/TemporalDiff/resolve/main/temporaldiff-v1-animatediff.safetensors
 
+WORKDIR /ComfyUI/models/checkpoints
+RUN wget -O dreamshaper_8.safetensors https://civitai.com/api/download/models/128713?type=Model&format=SafeTensor&size=pruned&fp=fp16 && \
+    wget -O Juggernaut_X_RunDiffusion.safetensors https://civitai.com/api/download/models/456194 && \
+    wget -O picxReal_10.safetensors https://civitai.com/api/download/models/272376 && \
+    wget -O realisticVisionV60B1_v51VAE.safetensors https://civitai.com/api/download/models/130072?type=Model&format=SafeTensor&size=pruned&fp=fp16 && \
+    wget -O disneyPixarCartoon_v10.safetensors https://civitai.com/api/download/models/69832 && \
+    wget -O absolutereality_lcm.safetensors https://civitai.com/api/download/models/256668?type=Model&format=SafeTensor&size=pruned&fp=fp16 && \
+    wget -O cyberrealistic_v50.safetensors https://civitai.com/api/download/models/537505?token=7629ebe930db512a2ff619a430b37bc6 && \
+    wget -O rpg_v5.safetensors https://civitai.com/api/download/models/124626?type=Model&format=SafeTensor&size=pruned&fp=fp16
 # Download IP-Adapter models
 WORKDIR /ComfyUI/models/ipadapter
 RUN wget -O ip-adapter-faceid-plusv2_sd15.bin https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15.bin && \
@@ -428,6 +485,7 @@ RUN wget -O ip-adapter-faceid-plusv2_sd15.bin https://huggingface.co/h94/IP-Adap
     wget -O ip-adapter-faceid-portrait_sdxl_unnorm.bin https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl_unnorm.bin && \
     wget -O ip-adapter-faceid_sd15.bin https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sd15.bin && \
     wget -O ip-adapter-faceid_sdxl.bin https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl.bin && \
+    wget -O ip-adapter-faceid-plus_sd15.bin https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plus_sd15.bin \
     wget -O ip-adapter-full-face_sd15.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-full-face_sd15.safetensors && \
     wget -O ip-adapter-plus-face_sd15.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors && \
     wget -O ip-adapter-plus-face_sdxl_vit-h.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors && \
@@ -440,7 +498,7 @@ RUN wget -O ip-adapter-faceid-plusv2_sd15.bin https://huggingface.co/h94/IP-Adap
     wget -O ip_plus_composition_sdxl.safetensors https://huggingface.co/ostris/ip-composition-adapter/resolve/main/ip_plus_composition_sdxl.safetensors && \
     wget -O ip_plus_composition_sd15.safetensors https://huggingface.co/ostris/ip-composition-adapter/resolve/main/ip_plus_composition_sd15.safetensors && \
     wget -O ip-adapter_sd15_vit-G.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_vit-G.safetensors
-
+    wget -O ip-adapter_sd15_vit-G.bin https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_vit-G.bin
 # Download Insightface models
 WORKDIR /ComfyUI/models/insightface
 RUN wget -O inswapper_128.onnx https://huggingface.co/ezioruan/inswapper_128.onnx/resolve/main/inswapper_128.onnx && \
@@ -459,8 +517,8 @@ WORKDIR /ComfyUI/models/loras/ipadapter
 RUN wget -O ip-adapter-faceid-plusv2_sd15_lora.safetensors https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15_lora.safetensors && \
     wget -O ip-adapter-faceid-plusv2_sdxl_lora.safetensors https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors && \
     wget -O ip-adapter-faceid_sd15_lora.safetensors https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sd15_lora.safetensors && \
-    wget -O ip-adapter-faceid_sdxl_lora.safetensors https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl_lora.safetensors
-
+    wget -O ip-adapter-faceid_sdxl_lora.safetensors https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl_lora.safetensors \
+    wget -O ip-adapter-faceid-plus_sd15_lora.safetensors https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plus_sd15_lora.safetensors
 # Download Sams models
 WORKDIR /ComfyUI/models/sams
 RUN wget -O sam_vit_b_01ec64.pth https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/sams/sam_vit_b_01ec64.pth
@@ -476,37 +534,43 @@ RUN wget -O person_yolov8m-seg.pt https://huggingface.co/Bingsu/adetailer/resolv
 
 # Download ControlNet models
 WORKDIR /ComfyUI/models/controlnet
-RUN wget -O control_sd15_inpaint_depth_hand_fp16.safetensors https://huggingface.co/hr16/ControlNet-HandRefiner-pruned/blob/main/control_sd15_inpaint_depth_hand_fp16.safetensors && \
+RUN wget -O control_sd15_inpaint_depth_hand_fp16.safetensors https://huggingface.co/hr16/ControlNet-HandRefiner-pruned/resolve/main/control_sd15_inpaint_depth_hand_fp16.safetensors && \
     wget -O control_v11e_sd15_ip2p_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11e_sd15_ip2p_fp16.safetensors && \
-    wget -O control_v11f1e_sd15_tile_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11f1e_sd15_tile_fp16.safetensors && \
-    wget -O control_v11f1p_sd15_depth_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11f1p_sd15_depth_fp16.safetensors && \
+    wget -O control_v11f1e_sd15_tile_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11f1e_sd15_tile_fp16.safetensors && \
+    wget -O control_v11f1p_sd15_depth_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11f1p_sd15_depth_fp16.safetensors && \
     wget -O control_v11p_sd15_canny_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_canny_fp16.safetensors && \
     wget -O control_v11p_sd15_lineart_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_lineart_fp16.safetensors && \
     wget -O control_v11p_sd15_mlsd_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_mlsd_fp16.safetensors && \
-    wget -O control_v11p_sd15_normalbae_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11p_sd15_normalbae_fp16.safetensors && \
-    wget -O control_v11p_sd15_openpose_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11p_sd15_openpose_fp16.safetensors && \
-    wget -O control_v11p_sd15_scribble_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11p_sd15_scribble_fp16.safetensors && \
-    wget -O control_v11p_sd15_softedge_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11p_sd15_softedge_fp16.safetensors && \
-    wget -O control_v11p_sd15s2_lineart_anime_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11p_sd15s2_lineart_anime_fp16.safetensors && \
-    wget -O control_v11u_sd15_tile_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/blob/main/control_v11u_sd15_tile_fp16.safetensors
-
+    wget -O control_v11p_sd15_normalbae_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_normalbae_fp16.safetensors && \
+    wget -O control_v11p_sd15_openpose_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_openpose_fp16.safetensors && \
+    wget -O control_v11p_sd15_scribble_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_scribble_fp16.safetensors && \
+    wget -O control_v11p_sd15_softedge_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_softedge_fp16.safetensors && \
+    wget -O control_v11p_sd15s2_lineart_anime_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15s2_lineart_anime_fp16.safetensors && \
+    wget -O control_v11u_sd15_tile_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11u_sd15_tile_fp16.safetensors
+    
 # Download ControlNet SDXL instantid model
 WORKDIR /ComfyUI/models/controlnet/SDXL/instantid
-RUN wget -O diffusion_pytorch_model.safetensors https://huggingface.co/lllyasviel/sd-controlnet-canny/blob/main/diffusion_pytorch_model.safetensors
+RUN wget -O diffusion_pytorch_model.safetensors https://huggingface.co/lllyasviel/sd-controlnet-canny/resolve/main/diffusion_pytorch_model.safetensors
 
 # Download Face detection models
 WORKDIR /ComfyUI/models/facedetection
-RUN wget -O detection_Resnet50_Final.pth https://huggingface.co/gmk123/GFPGAN/blob/main/detection_Resnet50_Final.pth && \
-    wget -O parsing_parsenet.pth https://huggingface.co/gmk123/GFPGAN/blob/main/parsing_parsenet.pth
+RUN wget -O detection_Resnet50_Final.pth https://huggingface.co/gmk123/GFPGAN/resolve/main/detection_Resnet50_Final.pth && \
+    wget -O parsing_parsenet.pth https://huggingface.co/gmk123/GFPGAN/resolve/main/parsing_parsenet.pth
+
+WORKDIR /ComfyUI/models/grounding-dino
+RUN wget -O groundingdino_swint_ogc.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth && \
+    wget -O GroundingDINO_SwinT_OGC.cfg.py https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinT_OGC.cfg.py && \
+    wget -O groundingdino_swinb_cogcoor.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swinb_cogcoor.pth && \
+    wget -O GroundingDINO_SwinB.cfg.py https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinB.cfg.py
 
 # Download Face restore models
 WORKDIR /ComfyUI/models/facerestore_models
 RUN wget -O GFPGANv1.3.pth https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth && \
     wget -O GFPGANv1.4.pth https://github.com/TencentARC/GFPGAN/releases/download/v1.3.4/GFPGANv1.4.pth && \
-    wget -O GPEN-BFR-1024.onnx https://huggingface.co/datasets/Gourieff/ReActor/blob/main/models/facerestore_models/GPEN-BFR-1024.onnx && \
-    wget -O GPEN-BFR-2048.onnx https://huggingface.co/datasets/Gourieff/ReActor/blob/main/models/facerestore_models/GPEN-BFR-2048.onnx && \
-    wget -O GPEN-BFR-512.onnx https://huggingface.co/datasets/Gourieff/ReActor/blob/main/models/facerestore_models/GPEN-BFR-512.onnx && \
-    wget -O codeformer-v0.1.0.pth https://huggingface.co/datasets/Gourieff/ReActor/blob/main/models/facerestore_models/codeformer-v0.1.0.pth
+    wget -O GPEN-BFR-1024.onnx https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-1024.onnx && \
+    wget -O GPEN-BFR-2048.onnx https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-2048.onnx && \
+    wget -O GPEN-BFR-512.onnx https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-512.onnx && \
+    wget -O codeformer-v0.1.0.pth https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/codeformer-v0.1.0.pth
 
 # Install ComfyUI Custom Nodes and Additional Packages
 
