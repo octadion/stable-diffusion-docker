@@ -497,7 +497,7 @@ RUN wget -O ip-adapter-faceid-plusv2_sd15.bin https://huggingface.co/h94/IP-Adap
     wget -O ip-adapter_sdxl_vit-h.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors && \
     wget -O ip_plus_composition_sdxl.safetensors https://huggingface.co/ostris/ip-composition-adapter/resolve/main/ip_plus_composition_sdxl.safetensors && \
     wget -O ip_plus_composition_sd15.safetensors https://huggingface.co/ostris/ip-composition-adapter/resolve/main/ip_plus_composition_sd15.safetensors && \
-    wget -O ip-adapter_sd15_vit-G.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_vit-G.safetensors
+    wget -O ip-adapter_sd15_vit-G.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_vit-G.safetensors && \
     wget -O ip-adapter_sd15_vit-G.bin https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_vit-G.bin
 # Download Insightface models
 WORKDIR /ComfyUI/models/insightface
