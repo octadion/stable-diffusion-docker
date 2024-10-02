@@ -269,7 +269,18 @@ RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/Comfy
     pip3 cache purge && \
     deactivate
 
-# Install comfyui-reactor-node
+RUN git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale --recursive custom_nodes/ComfyUI_UltimateSDUpscale
+
+RUN git clone https://github.com/time-river/ComfyUI-CLIPSeg.git custom_nodes/ComfyUI-CLIPSeg
+
+RUN git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git custom_nodes/ComfyUI_Comfyroll_CustomNodes
+
+RUN git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git custom_nodes/ComfyUI-Custom-Scripts
+
+RUN git clone https://github.com/rgthree/rgthree-comfy.git custom_nodes/rgthree-comfy
+
+RUN git clone https://github.com/FoundD-oka/ComfyUI-kisekae-OOTD.git custom_nodes/ComfyUI-kisekae-OOTD
+
 RUN git clone https://github.com/Gourieff/comfyui-reactor-node.git custom_nodes/comfyui-reactor-node && \
     cd custom_nodes/comfyui-reactor-node && \
     source /ComfyUI/venv/bin/activate && \
