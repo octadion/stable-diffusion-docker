@@ -274,7 +274,7 @@ RUN git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale --recursive cus
 RUN git clone https://github.com/time-river/ComfyUI-CLIPSeg.git custom_nodes/ComfyUI-CLIPSeg && \
     cp custom_nodes/ComfyUI-CLIPSeg/custom_nodes/clipseg.py custom_nodes/
 
-RUN git clone git clone https://github.com/evanspearman/ComfyMath.git custom_nodes/ComfyMath
+RUN git clone https://github.com/evanspearman/ComfyMath.git custom_nodes/ComfyMath
 
 RUN git clone https://github.com/AuroBit/ComfyUI-OOTDiffusion.git custom_nodes/ComfyUI-OOTDiffusion && \
     cd ComfyUI-OOTDiffusion && \
