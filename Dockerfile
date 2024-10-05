@@ -271,7 +271,22 @@ RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/Comfy
 
 RUN git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale --recursive custom_nodes/ComfyUI_UltimateSDUpscale
 
-RUN git clone https://github.com/time-river/ComfyUI-CLIPSeg.git custom_nodes/ComfyUI-CLIPSeg
+RUN git clone https://github.com/time-river/ComfyUI-CLIPSeg.git custom_nodes/ComfyUI-CLIPSeg && \
+    cp custom_nodes/ComfyUI-CLIPSeg/custom_nodes/clipseg.py custom_nodes/ && \
+    cd custom_nodes/ComfyUI-CLIPSeg && \
+    source /ComfyUI/venv/bin/activate && \
+    pip3 install -r requirements.txt && \
+    pip3 cache purge && \
+    deactivate
+
+RUN git clone git clone https://github.com/evanspearman/ComfyMath.git custom_nodes/ComfyMath
+
+RUN git clone https://github.com/AuroBit/ComfyUI-OOTDiffusion.git custom_nodes/ComfyUI-OOTDiffusion && \
+    cd ComfyUI-OOTDiffusion && \
+    source /ComfyUI/venv/bin/activate && \
+    pip3 install -r requirements.txt && \
+    pip3 cache purge && \
+    deactivate
 
 RUN git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git custom_nodes/ComfyUI_Comfyroll_CustomNodes
 
@@ -279,7 +294,19 @@ RUN git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git custom
 
 RUN git clone https://github.com/rgthree/rgthree-comfy.git custom_nodes/rgthree-comfy
 
-RUN git clone https://github.com/FoundD-oka/ComfyUI-kisekae-OOTD.git custom_nodes/ComfyUI-kisekae-OOTD
+RUN git clone https://github.com/FoundD-oka/ComfyUI-kisekae-OOTD.git custom_nodes/ComfyUI-kisekae-OOTD && \
+    cd custom_nodes/ComfyUI-kisekae-OOTD && \
+    source /ComfyUI/venv/bin/activate && \
+    pip3 install -r requirements.txt && \
+    pip3 cache purge && \
+    deactivate
+
+RUN git clone https://github.com/cubiq/ComfyUI_essentials.git custom_nodes/ComfyUI_essentials && \
+    cd custom_nodes/ComfyUI_essentials && \
+    source /ComfyUI/venv/bin/activate && \
+    pip3 install -r requirements.txt && \
+    pip3 cache purge && \
+    deactivate
 
 RUN git clone https://github.com/Gourieff/comfyui-reactor-node.git custom_nodes/comfyui-reactor-node && \
     cd custom_nodes/comfyui-reactor-node && \
