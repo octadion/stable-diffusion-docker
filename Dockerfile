@@ -277,7 +277,7 @@ RUN git clone https://github.com/time-river/ComfyUI-CLIPSeg.git custom_nodes/Com
 RUN git clone https://github.com/evanspearman/ComfyMath.git custom_nodes/ComfyMath
 
 RUN git clone https://github.com/AuroBit/ComfyUI-OOTDiffusion.git custom_nodes/ComfyUI-OOTDiffusion && \
-    cd ComfyUI-OOTDiffusion && \
+    cd custom_nodes/ComfyUI-OOTDiffusion && \
     source /ComfyUI/venv/bin/activate && \
     pip3 install -r requirements.txt && \
     pip3 cache purge && \
