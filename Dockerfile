@@ -272,12 +272,7 @@ RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/Comfy
 RUN git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale --recursive custom_nodes/ComfyUI_UltimateSDUpscale
 
 RUN git clone https://github.com/time-river/ComfyUI-CLIPSeg.git custom_nodes/ComfyUI-CLIPSeg && \
-    cp custom_nodes/ComfyUI-CLIPSeg/custom_nodes/clipseg.py custom_nodes/ && \
-    cd custom_nodes/ComfyUI-CLIPSeg && \
-    source /ComfyUI/venv/bin/activate && \
-    pip3 install -r requirements.txt && \
-    pip3 cache purge && \
-    deactivate
+    cp custom_nodes/ComfyUI-CLIPSeg/custom_nodes/clipseg.py custom_nodes/
 
 RUN git clone git clone https://github.com/evanspearman/ComfyMath.git custom_nodes/ComfyMath
 
