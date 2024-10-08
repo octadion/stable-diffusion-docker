@@ -83,9 +83,7 @@ RUN mkdir -p /sd-models
 #   wget https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors
 #   wget https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors
 #   wget https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors
-COPY sd_xl_base_1.0.safetensors /sd-models/sd_xl_base_1.0.safetensors
-COPY sd_xl_refiner_1.0.safetensors /sd-models/sd_xl_refiner_1.0.safetensors
-COPY sdxl_vae.safetensors /sd-models/sdxl_vae.safetensors
+COPY sd_xl_base_1.0.safetensors sd_xl_refiner_1.0.safetensors sdxl_vae.safetensors /sd-models/
 
 # Clone the git repo of the Stable Diffusion Web UI by Automatic1111
 # and set version
@@ -274,7 +272,11 @@ RUN git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale --recursive cus
 RUN git clone https://github.com/time-river/ComfyUI-CLIPSeg.git custom_nodes/ComfyUI-CLIPSeg && \
     cp custom_nodes/ComfyUI-CLIPSeg/custom_nodes/clipseg.py custom_nodes/
 
-RUN git clone https://github.com/evanspearman/ComfyMath.git custom_nodes/ComfyMath
+RUN git clone https://github.com/evanspearman/ComfyMath.git custom_nodes/ComfyMath && \
+    git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git custom_nodes/ComfyUI_Comfyroll_CustomNodes && \
+    git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git custom_nodes/ComfyUI-Custom-Scripts && \
+    git clone https://github.com/rgthree/rgthree-comfy.git custom_nodes/rgthree-comfy
+
 
 RUN git clone https://github.com/AuroBit/ComfyUI-OOTDiffusion.git custom_nodes/ComfyUI-OOTDiffusion && \
     cd custom_nodes/ComfyUI-OOTDiffusion && \
@@ -282,12 +284,6 @@ RUN git clone https://github.com/AuroBit/ComfyUI-OOTDiffusion.git custom_nodes/C
     pip3 install -r requirements.txt && \
     pip3 cache purge && \
     deactivate
-
-RUN git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git custom_nodes/ComfyUI_Comfyroll_CustomNodes
-
-RUN git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git custom_nodes/ComfyUI-Custom-Scripts
-
-RUN git clone https://github.com/rgthree/rgthree-comfy.git custom_nodes/rgthree-comfy
 
 RUN git clone https://github.com/FoundD-oka/ComfyUI-kisekae-OOTD.git custom_nodes/ComfyUI-kisekae-OOTD && \
     cd custom_nodes/ComfyUI-kisekae-OOTD && \
