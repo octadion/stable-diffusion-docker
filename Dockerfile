@@ -483,7 +483,40 @@ RUN mkdir -p /ComfyUI/models/controlnet \
     /ComfyUI/models/animatediff_models \
     /ComfyUI/models/ultralytics/segm \
     /ComfyUI/models/grounding-dino \
-    /ComfyUI/models/checkpoints
+    /ComfyUI/models/checkpoints \
+    /ComfyUI/models/vae \
+    /ComfyUI/models/clip \
+    /ComfyUI/models/unet && \
+    \
+    # Download Loras Models
+    cd /ComfyUI/models/loras && \
+    wget -O lcm-lora-sdv1-5.safetensors https://huggingface.co/latent-consistency/lcm-lora-sdv1-5/resolve/main/pytorch_lora_weights.safetensors && \
+    wget -O lcm-lora-sdxl.safetensors https://huggingface.co/latent-consistency/lcm-lora-sdxl/resolve/main/pytorch_lora_weights.safetensors && \
+    \
+    # Download VAE Models
+    cd /ComfyUI/models/vae && \
+    wget -O vae-ft-mse-840000-ema-pruned.ckpt https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt && \
+    wget -O ae.safetensors https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors?download=true && \
+    \
+    # Download Clip Models
+    cd /ComfyUI/models/clip && \
+    wget -O clip_l.safetensors https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors?download=true && \
+    wget -O t5xxl_fp16.safetensors https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors?download=true && \
+    wget -O t5xxl_fp8_e4m3fn.safetensors https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors?download=true && \
+    \
+    # Download Unet Models
+    cd /ComfyUI/models/unet && \
+    wget -O flux1-schnell.safetensors https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors && \
+    \
+    # Download Checkpoints Models
+    cd /ComfyUI/models/checkpoints && \
+    wget -O flux1-schnell-fp8.safetensors https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors && \
+    \
+    # Download Controlnet Models
+    cd /ComfyUI/models/controlnet && \
+    wget -O instantx_flux_canny.safetensors https://huggingface.co/InstantX/FLUX.1-dev-Controlnet-Canny/resolve/main/diffusion_pytorch_model.safetensors && \
+    wget -O FLUX.1-dev-ControlNet-Depth.safetensors https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Depth/resolve/main/diffusion_pytorch_model.safetensors && \
+    wget -O FLUX.1-dev-ControlNet-Union-Pro.safetensors https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro/resolve/main/diffusion_pytorch_model.safetensors
 
 WORKDIR /ComfyUI/models/animatediff_models
 RUN wget -O mm_sd_v14.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v14.ckpt && \
