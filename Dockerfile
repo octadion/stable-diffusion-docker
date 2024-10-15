@@ -1,8 +1,8 @@
 # Stage 1: Base
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as base
 
-ARG TORCH_VERSION=2.0.1
-ARG XFORMERS_VERSION=0.0.22
+ARG TORCH_VERSION=2.3.0
+ARG XFORMERS_VERSION=0.0.23
 ARG WEBUI_VERSION=v1.7.0
 ARG DREAMBOOTH_COMMIT=cf086c536b141fc522ff11f6cffc8b7b12da04b9
 ARG KOHYA_VERSION=v22.6.1
@@ -70,7 +70,7 @@ RUN apt update && \
 RUN ln -s /usr/bin/python3.10 /usr/bin/python
 
 # Install Torch, xformers and tensorrt
-RUN pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
+RUN pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 && \
     pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} tensorrt
 
 # Stage 2: Install applications
@@ -95,7 +95,7 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git && \
 WORKDIR /stable-diffusion-webui
 RUN python3 -m venv --system-site-packages /venv && \
     source /venv/bin/activate && \
-    pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 && \
     pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} && \
     pip3 install tensorflow[and-cuda] && \
     deactivate
@@ -237,7 +237,7 @@ COPY kohya_ss/requirements* ./
 RUN git checkout ${KOHYA_VERSION} && \
     python3 -m venv --system-site-packages venv && \
     source venv/bin/activate && \
-    pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 && \
     pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} \
         bitsandbytes==0.41.1 \
         tensorboard==2.14.1 \
@@ -442,7 +442,7 @@ RUN git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git custom_nodes/C
     deactivate
 
 RUN source /ComfyUI/venv/bin/activate && \
-    pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 && \
     pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} && \
     pip3 install albumentations==1.4.15 albucore==0.0.16 insightface opencv-python-headless ffmpeg-python && \
     pip3 install torchaudio && \
