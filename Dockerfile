@@ -270,29 +270,45 @@ RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/Comfy
 RUN git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale --recursive custom_nodes/ComfyUI_UltimateSDUpscale
 
 RUN git clone https://github.com/time-river/ComfyUI-CLIPSeg.git custom_nodes/ComfyUI-CLIPSeg && \
-    cp custom_nodes/ComfyUI-CLIPSeg/custom_nodes/clipseg.py custom_nodes/
+    cp custom_nodes/ComfyUI-CLIPSeg/custom_nodes/clipseg.py custom_nodes/ && \
+    cp custom_nodes/ComfyUI-CLIPSeg/custom_nodes/clipseg.py custom_nodes/ComfyUI-CLIPSeg/__init__.py && \
+    cp -r custom_nodes/ComfyUI-CLIPSeg custom_nodes/CLIPSeg
 
 RUN git clone https://github.com/evanspearman/ComfyMath.git custom_nodes/ComfyMath && \
     git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git custom_nodes/ComfyUI_Comfyroll_CustomNodes && \
     git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git custom_nodes/ComfyUI-Custom-Scripts && \
     git clone https://github.com/rgthree/rgthree-comfy.git custom_nodes/rgthree-comfy
 
+RUN git clone https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait.git custom_nodes/ComfyUI-AdvancedLivePortrait && \
+    cd custom_nodes/ComfyUI-AdvancedLivePortrait && \
+    source /ComfyUI/venv/bin/activate && \
+    pip3 install -r requirements.txt && \
+    pip3 cache purge && \
+    deactivate && \
+    \
+    git clone https://github.com/TemryL/ComfyUI-IDM-VTON.git custom_nodes/ComfyUI-IDM-VTON && \
+    cd custom_nodes/ComfyUI-IDM-VTON && \
+    source /ComfyUI/venv/bin/activate && \
+    python install.py && \
+    deactivate && \
+    \
+    git clone https://github.com/kijai/ComfyUI-IC-Light.git custom_nodes/ComfyUI-IC-Light
 
 RUN git clone https://github.com/AuroBit/ComfyUI-OOTDiffusion.git custom_nodes/ComfyUI-OOTDiffusion && \
     cd custom_nodes/ComfyUI-OOTDiffusion && \
     source /ComfyUI/venv/bin/activate && \
     pip3 install -r requirements.txt && \
     pip3 cache purge && \
-    deactivate
-
-RUN git clone https://github.com/FoundD-oka/ComfyUI-kisekae-OOTD.git custom_nodes/ComfyUI-kisekae-OOTD && \
+    deactivate && \
+    \
+    git clone https://github.com/FoundD-oka/ComfyUI-kisekae-OOTD.git custom_nodes/ComfyUI-kisekae-OOTD && \
     cd custom_nodes/ComfyUI-kisekae-OOTD && \
     source /ComfyUI/venv/bin/activate && \
     pip3 install -r requirements.txt && \
     pip3 cache purge && \
-    deactivate
-
-RUN git clone https://github.com/cubiq/ComfyUI_essentials.git custom_nodes/ComfyUI_essentials && \
+    deactivate && \
+    \
+    git clone https://github.com/cubiq/ComfyUI_essentials.git custom_nodes/ComfyUI_essentials && \
     cd custom_nodes/ComfyUI_essentials && \
     source /ComfyUI/venv/bin/activate && \
     pip3 install -r requirements.txt && \
@@ -304,18 +320,16 @@ RUN git clone https://github.com/Gourieff/comfyui-reactor-node.git custom_nodes/
     source /ComfyUI/venv/bin/activate && \
     python3 install.py && \
     pip3 cache purge && \
-    deactivate
-
-# Install ComfyUI-AnimateDiff-Evolved
-RUN git clone https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git custom_nodes/ComfyUI-AnimateDiff-Evolved && \
+    deactivate && \
+    \
+    git clone https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git custom_nodes/ComfyUI-AnimateDiff-Evolved && \
     cd custom_nodes/ComfyUI-AnimateDiff-Evolved && \
     source /ComfyUI/venv/bin/activate && \
     pip3 install . && \
     pip3 cache purge && \
-    deactivate
-
-# Install ComfyUI-Advanced-ControlNet
-RUN git clone https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet.git custom_nodes/ComfyUI-Advanced-ControlNet && \
+    deactivate && \
+    \
+    git clone https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet.git custom_nodes/ComfyUI-Advanced-ControlNet && \
     cd custom_nodes/ComfyUI-Advanced-ControlNet && \
     source /ComfyUI/venv/bin/activate && \
     pip3 install . && \
