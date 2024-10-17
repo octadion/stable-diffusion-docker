@@ -289,7 +289,8 @@ RUN git clone https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait.git 
     git clone https://github.com/TemryL/ComfyUI-IDM-VTON.git custom_nodes/ComfyUI-IDM-VTON && \
     cd custom_nodes/ComfyUI-IDM-VTON && \
     source /ComfyUI/venv/bin/activate && \
-    python install.py && \
+    pip3 install -r requirements.txt && \
+    pip3 cache purge && \
     deactivate && \
     \
     git clone https://github.com/kijai/ComfyUI-IC-Light.git custom_nodes/ComfyUI-IC-Light
