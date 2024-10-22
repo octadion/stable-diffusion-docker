@@ -285,6 +285,7 @@ RUN git clone https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait.git 
     pip3 install -r requirements.txt && \
     pip3 cache purge && \
     deactivate && \
+    cd ../../ && \
     \
     git clone https://github.com/TemryL/ComfyUI-IDM-VTON.git custom_nodes/ComfyUI-IDM-VTON && \
     cd custom_nodes/ComfyUI-IDM-VTON && \
@@ -292,6 +293,7 @@ RUN git clone https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait.git 
     pip3 install -r requirements.txt && \
     pip3 cache purge && \
     deactivate && \
+    cd ../../ && \
     \
     git clone https://github.com/kijai/ComfyUI-IC-Light.git custom_nodes/ComfyUI-IC-Light
 
@@ -301,6 +303,7 @@ RUN git clone https://github.com/AuroBit/ComfyUI-OOTDiffusion.git custom_nodes/C
     pip3 install -r requirements.txt && \
     pip3 cache purge && \
     deactivate && \
+    cd ../../ && \
     \
     git clone https://github.com/FoundD-oka/ComfyUI-kisekae-OOTD.git custom_nodes/ComfyUI-kisekae-OOTD && \
     cd custom_nodes/ComfyUI-kisekae-OOTD && \
@@ -308,6 +311,7 @@ RUN git clone https://github.com/AuroBit/ComfyUI-OOTDiffusion.git custom_nodes/C
     pip3 install -r requirements.txt && \
     pip3 cache purge && \
     deactivate && \
+    cd ../../ && \
     \
     git clone https://github.com/cubiq/ComfyUI_essentials.git custom_nodes/ComfyUI_essentials && \
     cd custom_nodes/ComfyUI_essentials && \
