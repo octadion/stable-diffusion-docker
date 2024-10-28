@@ -451,12 +451,7 @@ RUN git clone https://github.com/neverbiasu/ComfyUI-SAM2.git custom_nodes/ComfyU
     pip3 cache purge && \
     deactivate
 
-RUN git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git custom_nodes/ComfyUI_IPAdapter_plus && \
-    cd custom_nodes/ComfyUI_IPAdapter_plus && \
-    source /ComfyUI/venv/bin/activate && \
-    pip3 install . && \
-    pip3 cache purge && \
-    deactivate
+RUN git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git custom_nodes/ComfyUI_IPAdapter_plus
 
 RUN source /ComfyUI/venv/bin/activate && \
     pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 && \
