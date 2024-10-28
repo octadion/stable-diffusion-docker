@@ -18,7 +18,9 @@ services:
       - "3020:3021"
       - "6006:6066"
       - "8888:8888"
+      - "8000:8000"
+      - "2999:2999"
     environment:
-      JUPYTER_PASSWORD: "Jup1t3R!"
+      JUPYTER_PASSWORD: "MBH_Team100%GG"
       ENABLE_TENSORBOARD: "1"
     restart: unless-stopped

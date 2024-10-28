@@ -297,7 +297,7 @@ RUN git clone https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait.git 
     \
     git clone https://github.com/kijai/ComfyUI-IC-Light.git custom_nodes/ComfyUI-IC-Light
 
-RUN git clone https://github.com/AuroBit/ComfyUI-OOTDiffusion.git custom_nodes/ComfyUI-OOTDiffusion && \
+RUN git clone https://github.com/octadion/ComfyUI-OOTDiffusion.git custom_nodes/ComfyUI-OOTDiffusion && \
     cd custom_nodes/ComfyUI-OOTDiffusion && \
     source /ComfyUI/venv/bin/activate && \
     pip3 install -r requirements.txt && \
@@ -305,7 +305,7 @@ RUN git clone https://github.com/AuroBit/ComfyUI-OOTDiffusion.git custom_nodes/C
     deactivate && \
     cd ../../ && \
     \
-    git clone https://github.com/FoundD-oka/ComfyUI-kisekae-OOTD.git custom_nodes/ComfyUI-kisekae-OOTD && \
+    git clone https://github.com/octadion/ComfyUI-kisekae-OOTD custom_nodes/ComfyUI-kisekae-OOTD && \
     cd custom_nodes/ComfyUI-kisekae-OOTD && \
     source /ComfyUI/venv/bin/activate && \
     pip3 install -r requirements.txt && \
@@ -467,6 +467,7 @@ RUN source /ComfyUI/venv/bin/activate && \
     pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 && \
     pip3 install --no-cache-dir xformers==${XFORMERS_VERSION} && \
     pip3 install albumentations==1.4.15 albucore==0.0.16 insightface opencv-python-headless ffmpeg-python && \
+    pip3 install diffusers==0.26.1 huggingface-hub==0.25.2 && \
     pip3 install torchaudio && \
     deactivate
 
