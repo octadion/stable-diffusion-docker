@@ -385,12 +385,7 @@ RUN git clone https://github.com/jags111/efficiency-nodes-comfyui.git custom_nod
     deactivate
 
 # Install Derfuu_ComfyUI_ModdedNodes
-RUN git clone https://github.com/Derfuu/Derfuu_ComfyUI_ModdedNodes.git custom_nodes/Derfuu_ComfyUI_ModdedNodes && \
-    cd custom_nodes/Derfuu_ComfyUI_ModdedNodes && \
-    source /ComfyUI/venv/bin/activate && \
-    pip3 install . && \
-    pip3 cache purge && \
-    deactivate
+RUN git clone https://github.com/Derfuu/Derfuu_ComfyUI_ModdedNodes.git custom_nodes/Derfuu_ComfyUI_ModdedNodes
 
 # Install was-node-suite-comfyui
 RUN git clone https://github.com/WASasquatch/was-node-suite-comfyui.git custom_nodes/was-node-suite-comfyui && \
