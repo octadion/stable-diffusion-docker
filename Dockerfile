@@ -380,7 +380,7 @@ RUN git clone https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git cust
 RUN git clone https://github.com/jags111/efficiency-nodes-comfyui.git custom_nodes/efficiency-nodes-comfyui && \
     cd custom_nodes/efficiency-nodes-comfyui && \
     source /ComfyUI/venv/bin/activate && \
-    pip3 install -r requirements.txt && pip3 install . && \
+    pip3 install -r requirements.txt && \
     pip3 cache purge && \
     deactivate
 
