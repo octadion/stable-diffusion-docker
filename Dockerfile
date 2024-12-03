@@ -318,8 +318,34 @@ RUN git clone https://github.com/octadion/ComfyUI-OOTDiffusion.git custom_nodes/
     source /ComfyUI/venv/bin/activate && \
     pip3 install -r requirements.txt && \
     pip3 cache purge && \
+    deactivate && \
+    cd ../../ && \
+    \
+    git clone https://github.com/giriss/comfy-image-saver.git custom_nodes/comfy-image-saver && \
+    cd custom_nodes/comfy-image-saver && \
+    source /ComfyUI/venv/bin/activate && \
+    pip3 install -r requirements.txt && \
+    pip3 cache purge && \
+    deactivate && \
+    cd ../../ && \
+    \
+    git clone https://github.com/chrisgoringe/cg-use-everywhere.git custom_nodes/cg-use-everywhere && \
+    cd ../../ && \
+    \
+    git clone https://github.com/kijai/ComfyUI-KJNodes.git custom_nodes/ComfyUI-KJNodes && \
+    cd custom_nodes/ComfyUI-KJNodes && \
+    source /ComfyUI/venv/bin/activate && \
+    pip3 install -r requirements.txt && \
+    pip3 cache purge && \
+    deactivate && \
+    cd ../../ && \
+    \
+    git clone https://github.com/sipie800/ComfyUI-PuLID-Flux-Enhanced.git custom_nodes/ComfyUI-PuLID-Flux-Enhanced && \
+    cd custom_nodes/ComfyUI-PuLID-Flux-Enhanced&& \
+    source /ComfyUI/venv/bin/activate && \
+    pip3 install -r requirements.txt && \
+    pip3 cache purge && \
     deactivate
-
 
 RUN git clone https://github.com/Gourieff/comfyui-reactor-node.git custom_nodes/comfyui-reactor-node && \
     cd custom_nodes/comfyui-reactor-node && \
@@ -530,6 +556,72 @@ RUN mkdir -p /ComfyUI/models/controlnet \
     wget -O instantx_flux_canny.safetensors https://huggingface.co/InstantX/FLUX.1-dev-Controlnet-Canny/resolve/main/diffusion_pytorch_model.safetensors && \
     wget -O FLUX.1-dev-ControlNet-Depth.safetensors https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Depth/resolve/main/diffusion_pytorch_model.safetensors && \
     wget -O FLUX.1-dev-ControlNet-Union-Pro.safetensors https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro/resolve/main/diffusion_pytorch_model.safetensors
+
+RUN mkdir -p /ComfyUI/models/clip/t5 && \
+    cd /ComfyUI/models/clip/t5 && \
+    wget -O t5xxl_fp8_e4m3fn.safetensors https://huggingface.co/mcmonkey/google_t5-v1_1-xxl_encoderonly/resolve/main/t5xxl_fp8_e4m3fn.safetensors
+# Tambahkan direktori baru dan download model
+
+RUN mkdir -p /ComfyUI/models/clip_vision && \
+    cd /ComfyUI/models/clip_vision && \
+    wget -O CLIP-ViT-bigG-14-laion2B-39B-b160k.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors && \
+    wget -O CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors
+    wget -O sigclip_vision_patch14_384.safetensors https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors
+
+RUN mkdir -p /ComfyUI/models/controlnet/FLUX.1/InstantX-FLUX1-Dev-Union && \
+    cd /ComfyUI/models/controlnet/FLUX.1/InstantX-FLUX1-Dev-Union && \
+    wget -O diffusion_pytorch_model.safetensors https://huggingface.co/InstantX/FLUX.1-dev-Controlnet-Union/resolve/main/diffusion_pytorch_model.safetensors
+
+RUN mkdir -p /ComfyUI/models/diffusion_models/FLUX1 && \
+    cd /ComfyUI/models/diffusion_models/FLUX1 && \
+    wget -O flux1-dev-fp8.safetensors https://huggingface.co/lllyasviel/flux1_dev/resolve/main/flux1-dev-fp8.safetensors
+
+RUN mkdir -p /ComfyUI/models/diffusion_models && \
+    cd /ComfyUI/models/diffusion_models && \
+    wget --header="Authorization: Bearer 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" \
+        -O flux1-depth-dev.safetensors \
+        https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev/resolve/main/flux1-depth-dev.safetensors && \
+    wget --header="Authorization: Bearer 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" \
+        -O flux1-canny-dev.safetensors \
+        https://huggingface.co/black-forest-labs/FLUX.1-Canny-dev/resolve/main/flux1-canny-dev.safetensors
+
+
+RUN mkdir -p /ComfyUI/models/style_models && \
+    cd /ComfyUI/models/style_models && \
+    wget --header="Authorization: Bearer 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" \
+        -O flux1-redux-dev.safetensors \
+        https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/resolve/main/flux1-redux-dev.safetensors
+
+        
+RUN mkdir -p /ComfyUI/models/vae/FLUX1 && \
+    cd /ComfyUI/models/vae/FLUX1 && \
+    wget -O ae.safetensors https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors
+
+RUN mkdir -p /ComfyUI/models/upscale_models && \
+    cd /ComfyUI/models/upscale_models && \
+    wget -O 4x_foolhardy_Remacri.pth https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/resolve/main/4x_foolhardy_Remacri.pth && \
+    wget -O 4x-AnimeSharp.pth https://huggingface.co/utnah/esrgan/resolve/main/4x-AnimeSharp.pth && \
+    wget -O 4x-UltraSharp.pth https://huggingface.co/lokCX/4x-Ultrasharp/resolve/main/4x-UltraSharp.pth && \
+    wget -O 8x_NMKD-Superscale_150000_G.pth https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/8x_NMKD-Superscale_150000_G.pth
+
+RUN mkdir -p /ComfyUI/models/pulid && \
+    cd /ComfyUI/models/pulid && \
+    wget -O pulid_flux_v0.9.0.safetensors https://huggingface.co/guozinan/PuLID/resolve/main/pulid_flux_v0.9.0.safetensors
+
+RUN mkdir -p /ComfyUI/models/insightface/models/antelopev2 && \
+    cd /ComfyUI/models/insightface/models/antelopev2 && \
+    wget -O 1k3d68.onnx https://huggingface.co/DIAMONIK7777/antelopev2/resolve/main/1k3d68.onnx && \
+    wget -O 2d106det.onnx https://huggingface.co/DIAMONIK7777/antelopev2/resolve/main/2d106det.onnx && \
+    wget -O genderage.onnx https://huggingface.co/DIAMONIK7777/antelopev2/resolve/main/genderage.onnx && \
+    wget -O glintr100.onnx https://huggingface.co/DIAMONIK7777/antelopev2/resolve/main/glintr100.onnx && \
+    wget -O scrfd_10g_bnkps.onnx https://huggingface.co/DIAMONIK7777/antelopev2/resolve/main/scrfd_10g_bnkps.onnx
+
+# Download Annotator models
+RUN mkdir -p /ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/lllyasviel/Annotators && \
+    cd /ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/lllyasviel/Annotators && \
+    wget -O body_pose_model.pth https://huggingface.co/lllyasviel/Annotators/resolve/main/body_pose_model.pth && \
+    wget -O facenet.pth https://huggingface.co/lllyasviel/Annotators/resolve/main/facenet.pth && \
+    wget -O hand_pose_model.pth https://huggingface.co/lllyasviel/Annotators/resolve/main/hand_pose_model.pth
 
 WORKDIR /ComfyUI/models/animatediff_models
 RUN wget -O mm_sd_v14.ckpt https://huggingface.co/guoyww/animatediff/resolve/cd71ae134a27ec6008b968d6419952b0c0494cf2/mm_sd_v14.ckpt && \
