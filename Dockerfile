@@ -577,7 +577,7 @@ RUN mkdir -p /ComfyUI/models/diffusion_models/FLUX1 && \
 
 RUN mkdir -p /ComfyUI/models/diffusion_models && \
     cd /ComfyUI/models/diffusion_models && \
-    wget --header="Authorization: Bearer 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" \
+    wget -d --header="Authorization: Bearer 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" \
         -O flux1-depth-dev.safetensors \
         https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev/resolve/main/flux1-depth-dev.safetensors && \
     wget --header="Authorization: Bearer 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" \
@@ -587,7 +587,7 @@ RUN mkdir -p /ComfyUI/models/diffusion_models && \
 
 RUN mkdir -p /ComfyUI/models/style_models && \
     cd /ComfyUI/models/style_models && \
-    wget --header="Authorization: Bearer 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" \
+    wget -d --header="Authorization: Bearer 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" \
         -O flux1-redux-dev.safetensors \
         https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/resolve/main/flux1-redux-dev.safetensors
 
