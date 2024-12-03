@@ -560,12 +560,11 @@ RUN mkdir -p /ComfyUI/models/controlnet \
 RUN mkdir -p /ComfyUI/models/clip/t5 && \
     cd /ComfyUI/models/clip/t5 && \
     wget -O t5xxl_fp8_e4m3fn.safetensors https://huggingface.co/mcmonkey/google_t5-v1_1-xxl_encoderonly/resolve/main/t5xxl_fp8_e4m3fn.safetensors
-# Tambahkan direktori baru dan download model
 
 RUN mkdir -p /ComfyUI/models/clip_vision && \
     cd /ComfyUI/models/clip_vision && \
     wget -O CLIP-ViT-bigG-14-laion2B-39B-b160k.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors && \
-    wget -O CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors
+    wget -O CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors && \
     wget -O sigclip_vision_patch14_384.safetensors https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors
 
 RUN mkdir -p /ComfyUI/models/controlnet/FLUX.1/InstantX-FLUX1-Dev-Union && \
@@ -592,7 +591,7 @@ RUN mkdir -p /ComfyUI/models/style_models && \
         -O flux1-redux-dev.safetensors \
         https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/resolve/main/flux1-redux-dev.safetensors
 
-        
+
 RUN mkdir -p /ComfyUI/models/vae/FLUX1 && \
     cd /ComfyUI/models/vae/FLUX1 && \
     wget -O ae.safetensors https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors
