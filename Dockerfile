@@ -716,28 +716,21 @@ RUN wget -O control_sd15_inpaint_depth_hand_fp16.safetensors https://huggingface
     wget -O control_v11u_sd15_tile_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11u_sd15_tile_fp16.safetensors
     
 # Download ControlNet SDXL instantid model
-RUN set -e && \
-    mkdir -p /ComfyUI/models/controlnet/SDXL/instantid && \
-    cd /ComfyUI/models/controlnet/SDXL/instantid && \
-    wget --progress=dot:mega -O diffusion_pytorch_model.safetensors https://huggingface.co/lllyasviel/sd-controlnet-canny/resolve/main/diffusion_pytorch_model.safetensors && \
-    mkdir -p /ComfyUI/models/facedetection && \
-    cd /ComfyUI/models/facedetection && \
-    wget --progress=dot:mega -O detection_Resnet50_Final.pth https://huggingface.co/gmk123/GFPGAN/resolve/main/detection_Resnet50_Final.pth && \
-    wget --progress=dot:mega -O parsing_parsenet.pth https://huggingface.co/gmk123/GFPGAN/resolve/main/parsing_parsenet.pth && \
-    mkdir -p /ComfyUI/models/grounding-dino && \
-    cd /ComfyUI/models/grounding-dino && \
-    wget --progress=dot:mega -O groundingdino_swint_ogc.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth && \
-    wget --progress=dot:mega -O GroundingDINO_SwinT_OGC.cfg.py https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinT_OGC.cfg.py && \
-    wget --progress=dot:mega -O groundingdino_swinb_cogcoor.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swinb_cogcoor.pth && \
-    wget --progress=dot:mega -O GroundingDINO_SwinB.cfg.py https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinB.cfg.py && \
-    mkdir -p /ComfyUI/models/facerestore_models && \
-    cd /ComfyUI/models/facerestore_models && \
-    wget --progress=dot:mega -O GFPGANv1.3.pth https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth && \
-    wget --progress=dot:mega -O GFPGANv1.4.pth https://github.com/TencentARC/GFPGAN/releases/download/v1.3.4/GFPGANv1.4.pth && \
-    wget --progress=dot:mega -O GPEN-BFR-1024.onnx https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-1024.onnx && \
-    wget --progress=dot:mega -O GPEN-BFR-2048.onnx https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-2048.onnx && \
-    wget --progress=dot:mega -O GPEN-BFR-512.onnx https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-512.onnx && \
-    wget --progress=dot:mega -O codeformer-v0.1.0.pth https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/codeformer-v0.1.0.pth
+WORKDIR /ComfyUI/models
+RUN mkdir -p controlnet/SDXL/instantid facedetection grounding-dino facerestore_models && \
+    wget -O controlnet/SDXL/instantid/diffusion_pytorch_model.safetensors https://huggingface.co/lllyasviel/sd-controlnet-canny/resolve/main/diffusion_pytorch_model.safetensors && \
+    wget -O facedetection/detection_Resnet50_Final.pth https://huggingface.co/gmk123/GFPGAN/resolve/main/detection_Resnet50_Final.pth && \
+    wget -O facedetection/parsing_parsenet.pth https://huggingface.co/gmk123/GFPGAN/resolve/main/parsing_parsenet.pth && \
+    wget -O grounding-dino/groundingdino_swint_ogc.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth && \
+    wget -O grounding-dino/GroundingDINO_SwinT_OGC.cfg.py https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinT_OGC.cfg.py && \
+    wget -O grounding-dino/groundingdino_swinb_cogcoor.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swinb_cogcoor.pth && \
+    wget -O grounding-dino/GroundingDINO_SwinB.cfg.py https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinB.cfg.py && \
+    wget -O facerestore_models/GFPGANv1.3.pth https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth && \
+    wget -O facerestore_models/GFPGANv1.4.pth https://github.com/TencentARC/GFPGAN/releases/download/v1.3.4/GFPGANv1.4.pth && \
+    wget -O facerestore_models/GPEN-BFR-1024.onnx https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-1024.onnx && \
+    wget -O facerestore_models/GPEN-BFR-2048.onnx https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-2048.onnx && \
+    wget -O facerestore_models/GPEN-BFR-512.onnx https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-512.onnx && \
+    wget -O facerestore_models/codeformer-v0.1.0.pth https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/codeformer-v0.1.0.pth
 
 # Install ComfyUI Custom Nodes and Additional Packages
 
