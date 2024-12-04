@@ -716,28 +716,28 @@ RUN wget -O control_sd15_inpaint_depth_hand_fp16.safetensors https://huggingface
     wget -O control_v11u_sd15_tile_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11u_sd15_tile_fp16.safetensors
     
 # Download ControlNet SDXL instantid model
-WORKDIR /ComfyUI/models/controlnet/SDXL/instantid
-RUN wget -O diffusion_pytorch_model.safetensors https://huggingface.co/lllyasviel/sd-controlnet-canny/resolve/main/diffusion_pytorch_model.safetensors
-
-# Download Face detection models
-WORKDIR /ComfyUI/models/facedetection
-RUN wget -O detection_Resnet50_Final.pth https://huggingface.co/gmk123/GFPGAN/resolve/main/detection_Resnet50_Final.pth && \
-    wget -O parsing_parsenet.pth https://huggingface.co/gmk123/GFPGAN/resolve/main/parsing_parsenet.pth
-
-WORKDIR /ComfyUI/models/grounding-dino
-RUN wget -O groundingdino_swint_ogc.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth && \
+RUN mkdir -p /ComfyUI/models/controlnet/SDXL/instantid && \
+    cd /ComfyUI/models/controlnet/SDXL/instantid && \
+    wget -O diffusion_pytorch_model.safetensors https://huggingface.co/lllyasviel/sd-controlnet-canny/resolve/main/diffusion_pytorch_model.safetensors && \
+    mkdir -p /ComfyUI/models/facedetection && \
+    cd /ComfyUI/models/facedetection && \
+    wget -O detection_Resnet50_Final.pth https://huggingface.co/gmk123/GFPGAN/resolve/main/detection_Resnet50_Final.pth && \
+    wget -O parsing_parsenet.pth https://huggingface.co/gmk123/GFPGAN/resolve/main/parsing_parsenet.pth && \
+    mkdir -p /ComfyUI/models/grounding-dino && \
+    cd /ComfyUI/models/grounding-dino && \
+    wget -O groundingdino_swint_ogc.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth && \
     wget -O GroundingDINO_SwinT_OGC.cfg.py https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinT_OGC.cfg.py && \
     wget -O groundingdino_swinb_cogcoor.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swinb_cogcoor.pth && \
-    wget -O GroundingDINO_SwinB.cfg.py https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinB.cfg.py
-
-# Download Face restore models
-WORKDIR /ComfyUI/models/facerestore_models
-RUN wget -O GFPGANv1.3.pth https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth && \
+    wget -O GroundingDINO_SwinB.cfg.py https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinB.cfg.py && \
+    mkdir -p /ComfyUI/models/facerestore_models && \
+    cd /ComfyUI/models/facerestore_models && \
+    wget -O GFPGANv1.3.pth https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth && \
     wget -O GFPGANv1.4.pth https://github.com/TencentARC/GFPGAN/releases/download/v1.3.4/GFPGANv1.4.pth && \
     wget -O GPEN-BFR-1024.onnx https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-1024.onnx && \
     wget -O GPEN-BFR-2048.onnx https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-2048.onnx && \
     wget -O GPEN-BFR-512.onnx https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-512.onnx && \
     wget -O codeformer-v0.1.0.pth https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/codeformer-v0.1.0.pth
+
 
 # Install ComfyUI Custom Nodes and Additional Packages
 
