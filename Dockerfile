@@ -843,9 +843,9 @@ COPY comfyui/extra_model_paths.yaml /ComfyUI/
 RUN rm -f /etc/ssh/ssh_host_*
 
 # NGINX Proxy
-COPY nginx/nginx.conf /etc/nginx/nginx.conf \
-     nginx/502.html /usr/share/nginx/html/502.html \
-     nginx/README.md /usr/share/nginx/html/README.md
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/502.html /usr/share/nginx/html/502.html
+COPY nginx/README.md /usr/share/nginx/html/README.md
 
 # Set template version
 ENV TEMPLATE_VERSION=3.12.5
