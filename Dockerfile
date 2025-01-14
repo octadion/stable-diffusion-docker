@@ -171,7 +171,7 @@ RUN source /venv/bin/activate && \
 # Add inswapper model for the ReActor extension
 RUN mkdir -p /stable-diffusion-webui/models/insightface && \
     cd /stable-diffusion-webui/models/insightface && \
-    wget https://github.com/facefusion/facefusion-assets/releases/download/models/inswapper_128.onnx
+    wget https://huggingface.co/ezioruan/inswapper_128.onnx/resolve/main/inswapper_128.onnx
 
 RUN mkdir -p /stable-diffusion-webui/models/ControlNet && \
     cd /stable-diffusion-webui/models/ControlNet && \
